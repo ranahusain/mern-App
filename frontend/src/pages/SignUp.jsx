@@ -16,7 +16,7 @@ const SignUp = ({ addUser }) => {
       email,
       password,
     };
-    addUser(addUser);
+    addUser(newUser);
     return navigate("/Login");
   };
 

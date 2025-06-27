@@ -1,6 +1,8 @@
 import "./App.css";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import axios from "axios";
+
 import {
   Route,
   createBrowserRouter,
@@ -12,22 +14,19 @@ import {
 const App = () => {
   //add USER
   const addUser = async (newUser) => {
-    // console.log(newJob);
-    const res = await fetch("/api/jobs", {
-      method: "POST",
-      header: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    });
-    return;
+    try {
+      const res = await axios.post("http://localhost:3000/api/users/", newUser);
+      return res.data;
+    } catch (error) {
+      console.error("error in adding", error);
+    }
   };
 
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">
-        <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/Login" element={<Login addUser={addUser} />} />
+        <Route path="/SignUp" element={<SignUp addUser={addUser} />} />
+        <Route path="/Login" element={<Login />} />
       </Route>
     )
   );

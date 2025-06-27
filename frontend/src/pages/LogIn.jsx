@@ -36,9 +36,9 @@ const Login = () => {
             />
             <button
               className="btn"
-              onclick="window.open('https://www.google.com/')"
+              onClick="window.open('https://www.google.com/')"
             >
-              Sign Up
+              Log In
             </button>
           </div>
         </div>
