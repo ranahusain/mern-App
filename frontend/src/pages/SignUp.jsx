@@ -1,6 +1,15 @@
 import "../index.css";
 import form from "../assets/images/form.png";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 const SignUp = () => {
+  const navigate = useNavigate();
+  const submitForm = (e) => {
+    e.preventDefault();
+    return navigate("/Login");
+  };
+
   return (
     <>
       <div className="main-div">
@@ -9,7 +18,7 @@ const SignUp = () => {
             <img src={form} alt="" />
           </div>
 
-          <div className="form-inputs">
+          <form className="form-inputs" onSubmit={submitForm}>
             <div className="heading">
               <h1>Sign Up</h1>
             </div>
@@ -17,8 +26,8 @@ const SignUp = () => {
             <input
               className="inputs"
               type="text"
-              placeholder="enter your mail"
-              id="inputEmail"
+              placeholder="enter your name"
+              id="inputName"
             />
             <h4>E-mail</h4>
             <input
@@ -35,10 +44,10 @@ const SignUp = () => {
               id="inputPassword"
               placeholder="enter your password"
             />
-            <button className="btn" onclick="window.open('./login.html')">
+            <button className="btn" onClick={() => navigate("/Login")}>
               Sign Up
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </>
