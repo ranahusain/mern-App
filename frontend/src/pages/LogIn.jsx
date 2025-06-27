@@ -12,11 +12,11 @@ const Login = () => {
           <div className="form-inputs">
             <div className="heading">
               <h1>Log In</h1>
-              <p>
+              {/* <p>
                 Join our community and start your journey with us today. Sign up
                 to access exclusive features, connect with others, and stay
                 up-to-date with the latest updates.
-              </p>
+              </p> */}
             </div>
 
             <h4>E-mail</h4>
