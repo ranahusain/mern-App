@@ -9,12 +9,25 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-function App() {
+const App = () => {
+  //add USER
+  const addUser = async (newUser) => {
+    // console.log(newJob);
+    const res = await fetch("/api/jobs", {
+      method: "POST",
+      header: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
+    return;
+  };
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">
         <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/Login" element={<Login />} />
+        <Route path="/Login" element={<Login addUser={addUser} />} />
       </Route>
     )
   );
@@ -24,6 +37,6 @@ function App() {
       <RouterProvider router={router} />
     </>
   );
-}
+};
 
 export default App;

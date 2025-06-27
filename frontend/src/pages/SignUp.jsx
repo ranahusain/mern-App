@@ -1,12 +1,22 @@
 import "../index.css";
 import form from "../assets/images/form.png";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const SignUp = () => {
+const SignUp = ({ addUser }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
   const submitForm = (e) => {
     e.preventDefault();
+    const newUser = {
+      name,
+      email,
+      password,
+    };
+    addUser(addUser);
     return navigate("/Login");
   };
 
@@ -33,6 +43,8 @@ const SignUp = () => {
               type="text"
               placeholder="enter your name"
               id="inputName"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
             <h4>E-mail</h4>
             <input
@@ -40,6 +52,8 @@ const SignUp = () => {
               type="text"
               placeholder="enter your mail"
               id="inputEmail"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <h4>Password</h4>
             <input
@@ -48,6 +62,8 @@ const SignUp = () => {
               name=""
               id="inputPassword"
               placeholder="enter your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <button className="btn" onClick={() => navigate("/Login")}>
               Sign Up
