@@ -9,11 +9,11 @@ const PORT = 3000;
 app.use(express.json());
 connectDB();
 
-// app.use("*", (req, res) => {
-//   res.status(404).json({ message: "Route not found" });
-// });
+app.use("*", (req, res) => {
+  res.status(404).json({ message: "Route not found" });
+});
 
-// app.use(cors());
+app.use(cors());
 
 app.use("/api", users);
 
