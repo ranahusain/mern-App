@@ -21,7 +21,7 @@ router.post("/users", async (req, res) => {
   console.log("Received request for POST method");
   try {
     const { name, email } = req.body;
-    const newUser = new User({ name, email });
+    const newUser = new User({ name, email, name });
     await newUser.save();
     res.status(200).json({
       success: true,
