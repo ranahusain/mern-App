@@ -1,6 +1,13 @@
 import "../index.css";
 import form from "../assets/images/form.png";
+import { useNavigate } from "react-router-dom";
+import AllUsers from "./AllUsers";
+
 const Login = () => {
+  const navigate = useNavigate();
+  const LoginSubmit = (e) => {
+    return navigate("/AllUsers");
+  };
   return (
     <>
       <div className="main-div">
@@ -9,7 +16,7 @@ const Login = () => {
             <img src={form} alt="" />
           </div>
 
-          <div className="form-inputs">
+          <form className="form-inputs" onSubmit={LoginSubmit}>
             <div className="heading">
               <h1>Log In</h1>
               {/* <p>
@@ -40,7 +47,7 @@ const Login = () => {
             >
               Log In
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </>

@@ -65,9 +65,7 @@ const SignUp = ({ addUser }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button className="btn" onClick={() => navigate("/Login")}>
-              Sign Up
-            </button>
+            <button className="btn">Sign Up</button>
           </form>
         </div>
       </div>
@@ -76,3 +74,5 @@ const SignUp = ({ addUser }) => {
 };
 
 export default SignUp;
+
+// onClick={() => navigate("/Login")}

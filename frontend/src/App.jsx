@@ -2,6 +2,7 @@ import "./App.css";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import axios from "axios";
+import AllUsers from "./pages/AllUsers";
 
 import {
   Route,
@@ -27,6 +28,7 @@ const App = () => {
       <Route path="/">
         <Route path="/SignUp" element={<SignUp addUser={addUser} />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/AllUsers" element={<AllUsers />} />
       </Route>
     )
   );
