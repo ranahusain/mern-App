@@ -21,8 +21,8 @@ const Login = () => {
       console.log(res.data);
       if (res.data.success) {
         console.log("login sucees");
-        // const loggedInUser = res.data.user.name;
-        // localStorage.setItem("user", loggedInUser);
+        const loggedInUser = res.data.user.name;
+        localStorage.setItem("user", loggedInUser);
       } else {
         console.log("login failed");
       }

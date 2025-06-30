@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import "../index.css";
 
 const AllUsers = () => {
+  const navigate = useNavigate();
+
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const fetchUsers = async () => {
@@ -19,6 +22,11 @@ const AllUsers = () => {
     };
     fetchUsers();
   }, []);
+
+  const ChatUser = async (name) => {
+    localStorage.setItem("ChatUser", name);
+    return navigate("/Chat");
+  };
 
   return (
     <>
@@ -39,7 +47,9 @@ const AllUsers = () => {
               <p>
                 <strong>Password:</strong> {user.password}
               </p>
-              <button className="btn-1">Chat with {user.name}</button>
+              <button className="btn-1 " onClick={() => ChatUser(user.name)}>
+                Chat with {user.name}
+              </button>
             </div>
           ))}
         </div>

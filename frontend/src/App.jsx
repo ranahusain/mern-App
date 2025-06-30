@@ -3,7 +3,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import axios from "axios";
 import AllUsers from "./pages/AllUsers";
-// import Chat from "./pages/Chat";
+import Chat from "./pages/Chat";
 
 import {
   Route,
@@ -33,7 +33,7 @@ const App = () => {
         <Route path="/SignUp" element={<SignUp addUser={addUser} />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/AllUsers" element={<AllUsers />} />
-        {/* <Route path="/Chat" element={<Chat />} /> */}
+        <Route path="/Chat" element={<Chat />} />
       </Route>
     )
   );
