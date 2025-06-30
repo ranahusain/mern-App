@@ -31,11 +31,6 @@ const SignUp = ({ addUser }) => {
           <form className="form-inputs" onSubmit={submitForm}>
             <div className="heading">
               <h1>Sign Up</h1>
-              {/* <p>
-                Join our community and start your journey with us today. Sign up
-                to access exclusive features, connect with others, and stay
-                up-to-date with the latest updates.
-              </p> */}
             </div>
             <h4>Name</h4>
             <input

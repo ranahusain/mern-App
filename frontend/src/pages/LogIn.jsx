@@ -1,7 +1,7 @@
 import "../index.css";
 import form from "../assets/images/form.png";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 const Login = () => {
@@ -17,17 +17,19 @@ const Login = () => {
         email,
         password,
       });
+
       console.log(res.data);
       if (res.data.success) {
         console.log("login sucees");
+        const loggedInUser = res.data.user.name;
+        localStorage.setItem("user", loggedInUser);
+        return navigate("/AllUsers");
       } else {
         console.log("login failed");
       }
     } catch (error) {
       console.error("error in loggin in ", error);
     }
-
-    return navigate("/AllUsers");
   };
 
   return (

@@ -16,7 +16,10 @@ const App = () => {
   //add USER
   const addUser = async (newUser) => {
     try {
-      const res = await axios.post("http://localhost:3000/api/users/", newUser);
+      const res = await axios.post(
+        "http://localhost:3000/api/signup/",
+        newUser
+      );
       return res.data;
     } catch (error) {
       console.error("error in adding", error);
