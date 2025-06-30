@@ -1,6 +1,9 @@
 const express = require("express");
 const connectDB = require("./db");
 const users = require("./routes/users");
+const login = require("./routes/login");
+const signup = require("./routes/signup");
+
 const cors = require("cors");
 
 const app = express();
@@ -10,13 +13,11 @@ app.use(express.json());
 
 connectDB();
 
-// app.use("*", (req, res) => {
-//   res.status(404).json({ message: "Route not found" });
-// });
-
 app.use(cors());
 
 app.use("/api", users);
+app.use("/api", login);
+app.use("/api", signup);
 
 app.get("/", (req, res) => {
   console.log("I am inside home page router");

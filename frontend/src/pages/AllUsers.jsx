@@ -17,7 +17,6 @@ const AllUsers = () => {
         console.log("error in axios", error);
       }
     };
-
     fetchUsers();
   }, []);
 
