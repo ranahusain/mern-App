@@ -1,5 +1,8 @@
 import "../index.css";
 import form from "../assets/images/form.png";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -23,13 +26,16 @@ const Login = () => {
         console.log("login sucees");
         const loggedInUser = res.data.user.name;
         localStorage.setItem("user", loggedInUser);
+        toast.success("Job Added Successfully");
+
+        return navigate("/AllUsers");
       } else {
         console.log("login failed");
+        toast.error("Login failed, please check your credentials");
       }
     } catch (error) {
       console.error("error in loggin in ", error);
     }
-    return navigate("/AllUsers");
   };
 
   return (
@@ -43,11 +49,6 @@ const Login = () => {
           <form className="form-inputs" onSubmit={LoginSubmit}>
             <div className="heading">
               <h1>Log In</h1>
-              {/* <p>
-                Join our community and start your journey with us today. Sign up
-                to access exclusive features, connect with others, and stay
-                up-to-date with the latest updates.
-              </p> */}
             </div>
 
             <h4>E-mail</h4>
@@ -73,6 +74,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <ToastContainer theme="dark" />
     </>
   );
 };

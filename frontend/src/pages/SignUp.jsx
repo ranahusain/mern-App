@@ -1,23 +1,35 @@
 import "../index.css";
 import form from "../assets/images/form.png";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 
 const SignUp = ({ addUser }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const navigate = useNavigate();
-  const submitForm = (e) => {
+
+  const submitForm = async (e) => {
     e.preventDefault();
-    const newUser = {
-      name,
-      email,
-      password,
-    };
-    addUser(newUser);
-    return navigate("/Login");
+    const newUser = { name, email, password };
+
+    try {
+      const response = await addUser(newUser);
+      const result = response.data;
+      console.log("Response from addUser:", result);
+      if (result.success) {
+        navigate("/Login");
+      }
+    } catch (error) {
+      if (error.response && error.response.status === 409) {
+        toast.error("User already exists");
+      } else {
+        toast.error("Signup failed");
+      }
+    }
   };
 
   return (
@@ -48,6 +60,7 @@ const SignUp = ({ addUser }) => {
               placeholder="enter your mail"
               id="inputEmail"
               value={email}
+              // pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
@@ -59,12 +72,16 @@ const SignUp = ({ addUser }) => {
               id="inputPassword"
               placeholder="enter your password"
               value={password}
+              // required
+              // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+              minLength={6}
               onChange={(e) => setPassword(e.target.value)}
             />
             <button className="btn">Sign Up</button>
           </form>
         </div>
       </div>
+      <ToastContainer theme="dark" />
     </>
   );
 };

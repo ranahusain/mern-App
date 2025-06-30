@@ -4,6 +4,7 @@ import SignUp from "./pages/SignUp";
 import axios from "axios";
 import AllUsers from "./pages/AllUsers";
 import Chat from "./pages/Chat";
+import { ToastContainer } from "react-toastify";
 
 import {
   Route,
@@ -24,6 +25,7 @@ const App = () => {
       return res.data;
     } catch (error) {
       console.error("error in adding", error);
+      throw error; // Re-throw the error to handle it in the calling function
     }
   };
 
