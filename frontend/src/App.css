@@ -1,1 +1,82 @@
 @import "tailwindcss";
+.chat-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-list {
+  color: white;
+  margin-bottom: 1rem;
+  max-height: 16rem;
+  overflow-y: auto;
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.message-bubble {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem auto;
+  border-radius: 999px;
+  word-wrap: break-word;
+}
+
+.own-message {
+  background-color: white;
+  color: black;
+  align-self: flex-end;
+  text-align: right;
+}
+
+.other-message {
+  background-color: #4a4a4a;
+  color: white;
+  align-self: flex-start;
+  text-align: left;
+}
+
+.message-text {
+  margin: 0;
+}
+
+.message-user {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.input-section {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.message-input {
+  padding: 0.5rem 2rem;
+  border-radius: 0.375rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.chat-button {
+  background-color: white;
+  color: black;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.chat-button:hover {
+  background-color: #4a4a4a;
+  color: white;
+}
