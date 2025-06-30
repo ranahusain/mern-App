@@ -49,6 +49,7 @@ const SignUp = ({ addUser }) => {
               id="inputEmail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <h4>Password</h4>
             <input
