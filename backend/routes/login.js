@@ -39,16 +39,11 @@ router.post("/login", async (req, res) => {
         expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
         // httpOnly: true, //by this only Server Side can Manipulate the Cookie
       };
-      res
-        .status(200)
-        .cookie("token", token, options)
-        .cookie("name", user.name, options)
-        .cookie("email", user.email, options)
-        .json({
-          success: true,
-          token,
-          user,
-        });
+      res.status(200).cookie("token", token, options).json({
+        success: true,
+        token,
+        user,
+      });
     }
   } catch (err) {
     console.error("Error while loggin in", err);

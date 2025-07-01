@@ -8,6 +8,7 @@ const PORT = 3000;
 const users = require("./routes/users");
 const login = require("./routes/login");
 const signup = require("./routes/signup");
+const logout = require("./routes/logout");
 const cors = require("cors");
 
 const { Server } = require("socket.io");
@@ -45,6 +46,7 @@ app.use(cookieParser());
 app.use("/api", users);
 app.use("/api", login);
 app.use("/api", signup);
+app.use("/api", logout);
 
 app.get("/", (req, res) => {
   console.log("I am inside home page router");
