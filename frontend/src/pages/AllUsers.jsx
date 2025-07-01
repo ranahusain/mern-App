@@ -41,6 +41,8 @@ const AllUsers = () => {
     }
   };
 
+  const loggedInUser = localStorage.getItem("user");
+
   return (
     <>
       <div className="p-8">
@@ -49,23 +51,25 @@ const AllUsers = () => {
           Logout
         </button>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-          {users.map((user, index) => (
-            <div
-              key={index}
-              className="bg-gray-800 text-white p-4 rounded shadow"
-            >
-              <p>
-                <strong>Name:</strong> {user.name}
-              </p>
-              <p>
-                <strong>Email:</strong> {user.email}
-              </p>
-              <p>{/* <strong>Password:</strong> {user.password} */}</p>
-              <button className="btn-1 " onClick={() => ChatUser(user.name)}>
-                Chat with {user.name}
-              </button>
-            </div>
-          ))}
+          {users
+            .filter((user) => user.name !== loggedInUser)
+            .map((user, index) => (
+              <div
+                key={index}
+                className="bg-gray-800 text-white p-4 rounded shadow"
+              >
+                <p>
+                  <strong>Name:</strong> {user.name}
+                </p>
+                <p>
+                  <strong>Email:</strong> {user.email}
+                </p>
+                <p>{/* <strong>Password:</strong> {user.password} */}</p>
+                <button className="btn-1 " onClick={() => ChatUser(user.name)}>
+                  Chat with {user.name}
+                </button>
+              </div>
+            ))}
         </div>
       </div>
     </>

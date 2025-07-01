@@ -3,6 +3,9 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 router.post("/login", async (req, res) => {
   console.log("Received request for POST method");
@@ -26,7 +29,7 @@ router.post("/login", async (req, res) => {
     if (user && (await bcrypt.compare(password, user.password))) {
       const token = jwt.sign(
         { id: user._id },
-        "shhhh", //use something like process.env.jwtsecret);
+        process.env.JWTSECRET, //use something like process.env.jwtsecret);
         { expiresIn: "2h" }
       );
 

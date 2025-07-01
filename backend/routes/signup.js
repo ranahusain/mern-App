@@ -57,6 +57,9 @@ const router = express.Router();
 const bcrypt = require("bcryptjs");
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 router.post("/signup", async (req, res) => {
   try {
@@ -80,7 +83,8 @@ router.post("/signup", async (req, res) => {
     // Generate JWT token (use ._id from the saved user)
     const token = jwt.sign(
       { id: newUser._id },
-      "shhhh", // Ideally: process.env.JWT_SECRET
+      // "shhhh",
+      process.env.JWTSECRET, // Ideally: process.env.JWT_SECRET
       { expiresIn: "2h" }
     );
 
