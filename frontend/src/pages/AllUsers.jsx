@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import axios from "axios";
 import "../index.css";
@@ -28,11 +29,26 @@ const AllUsers = () => {
     return navigate("/Chat");
   };
 
+  const logoutUser = async () => {
+    try {
+      await axios.get("http://localhost:3000/api/logout", {
+        withCredentials: true,
+      });
+      toast.success("LoggedOut Successfully !");
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="p-8">
         <h1 className="text-2xl font-bold mb-6 text-white">All Users</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <button className="btn-1" onClick={logoutUser}>
+          Logout
+        </button>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {users.map((user, index) => (
             <div
               key={index}
@@ -44,9 +60,7 @@ const AllUsers = () => {
               <p>
                 <strong>Email:</strong> {user.email}
               </p>
-              <p>
-                <strong>Password:</strong> {user.password}
-              </p>
+              <p>{/* <strong>Password:</strong> {user.password} */}</p>
               <button className="btn-1 " onClick={() => ChatUser(user.name)}>
                 Chat with {user.name}
               </button>
