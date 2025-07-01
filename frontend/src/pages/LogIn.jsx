@@ -16,10 +16,14 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/api/login/", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "http://localhost:3000/api/login/",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
 
       console.log(res.data);
       if (res.data.success) {

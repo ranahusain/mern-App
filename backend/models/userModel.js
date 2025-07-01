@@ -18,6 +18,10 @@ const UserSchema = new Schema({
     type: String,
     require: true,
   },
+  token: {
+    type: String,
+    default: null,
+  },
 
   createdAt: {
     type: Date,
