@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-
 const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 
 router.post("/signup", async (req, res) => {
   console.log("Received request for POST method");
@@ -32,6 +32,15 @@ router.post("/signup", async (req, res) => {
       success: true,
       user: newUser,
     });
+
+    //generate JWT token for user and send it
+    const token = jwt.sign(
+      { id: User._id },
+      "shhhh", //use something like process.env.jwtsecret);
+      { expiresIn: "2h" }
+    );
+    User.token = token;
+    User.password = undefined;
   } catch (err) {
     console.error("Error while saving user:", err);
     res.status(500).json({
