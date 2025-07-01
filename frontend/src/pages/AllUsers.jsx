@@ -13,7 +13,7 @@ const AllUsers = () => {
     const fetchUsers = async () => {
       const apiUrl = "http://localhost:3000/api/users";
       try {
-        const res = await axios.get(apiUrl);
+        const res = await axios.get(apiUrl, { withCredentials: true });
         const data = res.data;
         setUsers(data);
       } catch (error) {
