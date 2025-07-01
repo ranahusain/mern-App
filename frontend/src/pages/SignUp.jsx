@@ -1,10 +1,9 @@
 import "../index.css";
 import form from "../assets/images/form.png";
 import { useNavigate } from "react-router-dom";
-// import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignUp = ({ addUser }) => {
   const [name, setName] = useState("");
@@ -72,16 +71,18 @@ const SignUp = ({ addUser }) => {
               id="inputPassword"
               placeholder="enter your password"
               value={password}
-              // required
+              required
               // pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
               minLength={6}
               onChange={(e) => setPassword(e.target.value)}
             />
             <button className="btn">Sign Up</button>
+            <p>
+              Already have an account? <Link to="/login">Login</Link>
+            </p>
           </form>
         </div>
       </div>
-      {/* <ToastContainer theme="dark" /> */}
     </>
   );
 };
