@@ -1,8 +1,8 @@
 import "../index.css";
 import form from "../assets/images/form.png";
 import { toast } from "react-toastify";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -26,12 +26,12 @@ const Login = () => {
         console.log("login sucees");
         const loggedInUser = res.data.user.name;
         localStorage.setItem("user", loggedInUser);
-        toast.success("Job Added Successfully");
+        toast.success("Logged In Successfully");
 
         return navigate("/AllUsers");
       } else {
         console.log("login failed");
-        toast.error("Login failed, please check your credentials");
+        toast.error("Login failed, Verify Credentials !");
       }
     } catch (error) {
       console.error("error in loggin in ", error);
@@ -74,7 +74,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <ToastContainer theme="dark" />
+      {/* <ToastContainer theme="dark" /> */}
     </>
   );
 };

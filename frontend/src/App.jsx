@@ -4,7 +4,7 @@ import SignUp from "./pages/SignUp";
 import axios from "axios";
 import AllUsers from "./pages/AllUsers";
 import Chat from "./pages/Chat";
-import { ToastContainer } from "react-toastify";
+// import { ToastContainer } from "react-toastify";
 
 import {
   Route,
@@ -13,6 +13,7 @@ import {
   Router,
   RouterProvider,
 } from "react-router-dom";
+import MainLayout from "./Layout/MainLayout";
 
 const App = () => {
   //add USER
@@ -31,7 +32,7 @@ const App = () => {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/">
+      <Route path="/" element={<MainLayout />}>
         <Route path="/SignUp" element={<SignUp addUser={addUser} />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/AllUsers" element={<AllUsers />} />

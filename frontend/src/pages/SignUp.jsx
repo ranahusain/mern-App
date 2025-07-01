@@ -1,9 +1,9 @@
 import "../index.css";
 import form from "../assets/images/form.png";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+// import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState } from "react";
 
 const SignUp = ({ addUser }) => {
@@ -17,10 +17,10 @@ const SignUp = ({ addUser }) => {
     const newUser = { name, email, password };
 
     try {
-      const response = await addUser(newUser);
-      const result = response.data;
+      const result = await addUser(newUser);
       console.log("Response from addUser:", result);
       if (result.success) {
+        toast.success("User created successfully");
         navigate("/Login");
       }
     } catch (error) {
@@ -81,7 +81,7 @@ const SignUp = ({ addUser }) => {
           </form>
         </div>
       </div>
-      <ToastContainer theme="dark" />
+      {/* <ToastContainer theme="dark" /> */}
     </>
   );
 };
